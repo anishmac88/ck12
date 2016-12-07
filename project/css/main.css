@@ -1,0 +1,17 @@
+#calendar-container{
+    position: relative;
+    background-color: beige;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.meeting-box{
+    position: absolute;
+    background-color: aquamarine;
+    text-align: center;
+}
+
+#heading{
+    text-align: center;
+    margin-bottom: 10px;
+}
