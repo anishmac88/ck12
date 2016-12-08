@@ -6,6 +6,7 @@ var calendar = function () {
     var calendarWidth = 600;
 
     function initMeetingsPosition(meetings) {
+        //Initiate with height and position. And find the vertical that a meeting falls under.
         var vertical =0;
         for(var i=0;i <meetings.length; i++) {
                 meetings[i].height = (meetings[i].end - meetings[i].start) * minutePixelSize;
@@ -20,12 +21,12 @@ var calendar = function () {
                 meetings[i].width = width;
                 meetings[i].left = (meetings[i].vertical - 1) * meetings[i].width;
             }
-            console.log(meetings);
             return meetings;
     }
 
     function findNextMeeting(vertical,meetings,curIndex,endTime) {
-        for (var i=0;i < meetings.length ;i++){
+        //Find the next meeting that falls under same vertical
+        for (var i=curIndex + 1;i < meetings.length ;i++){
             if(!meetings[i].processed && meetings[i].start >= endTime){
                 findNextMeeting(vertical,meetings,i,meetings[i].end);
                 break;
@@ -37,6 +38,7 @@ var calendar = function () {
     }
 
     function sliceMeetingsAndInit(meetings) {
+        //Breaks the meetings array to disjoint groups (non overlapping meetings)
         if(!meetings){
             return [];
         }
